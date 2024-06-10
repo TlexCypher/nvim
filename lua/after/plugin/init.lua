@@ -18,6 +18,7 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
 
     },
+    --rose pine
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -25,6 +26,17 @@ require("lazy").setup({
             vim.cmd('colorscheme rose-pine')
         end
     },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     name = "tokyonight",
+    --     config = function()
+    --         vim.cmd('colorscheme tokyonight')
+    --     end
+    -- },
+    -- {
+    --     'Mofiqul/vscode.nvim',
+    --     name = 'vscode',
+    -- },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
