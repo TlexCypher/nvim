@@ -19,23 +19,33 @@ require("lazy").setup({
 
     },
     --rose pine
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     config = function()
+    --         vim.cmd('colorscheme rose-pine')
+    --     end
+    -- },
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
+        "folke/tokyonight.nvim",
+        name = "tokyonight",
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme tokyonight')
         end
     },
     -- {
-    --     "folke/tokyonight.nvim",
-    --     name = "tokyonight",
-    --     config = function()
-    --         vim.cmd('colorscheme tokyonight')
-    --     end
-    -- },
-    -- {
     --     'Mofiqul/vscode.nvim',
     --     name = 'vscode',
+    -- },
+    -- {
+    --     "catppuccin/nvim",
+    --     name = "catppuccin",
+    --     priority = 1000,
+    --     background = { -- :h background
+    --         -- light = "latte",
+    --         dark = "macchiato",
+    --
+    --     },
     -- },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -93,5 +103,5 @@ require("lazy").setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-    }
+    },
 })
