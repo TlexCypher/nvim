@@ -19,20 +19,20 @@ require("lazy").setup({
 
     },
     --rose pine
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    -- },
     {
-        "folke/tokyonight.nvim",
-        name = "tokyonight",
+        "rose-pine/neovim",
+        name = "rose-pine",
         config = function()
-            vim.cmd('colorscheme tokyonight')
+            vim.cmd('colorscheme rose-pine')
         end
     },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     name = "tokyonight",
+    --     config = function()
+    --         vim.cmd('colorscheme tokyonight')
+    --     end
+    -- },
     -- {
     --     'Mofiqul/vscode.nvim',
     --     name = 'vscode',
@@ -47,6 +47,10 @@ require("lazy").setup({
     --
     --     },
     -- },
+    {
+        -- amongst your other plugins
+        { 'akinsho/toggleterm.nvim', version = "*", config = true },
+    },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
