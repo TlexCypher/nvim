@@ -26,6 +26,47 @@ mason_lspconfig.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {}
     end,
+    ["pyright"] = function()
+        local function is_directory(path)
+            local stat = vim.loop.fs_stat(path)
+            return stat and stat.type == "directory"
+        end
+        local function get_python_path()
+            local cwd = vim.fn.getcwd()
+            local pyproject_toml = cwd .. "/pyproject.toml"
+            local virtualenv = cwd .. "/venv"
+            local uv_rye_env = cwd .. "/.venv"
+            -- using poetry or uv or rye
+            if vim.fn.filereadable(pyproject_toml) == 1 then
+                local poetry_venv = vim.fn.trim(vim.fn.system("poetry env info --path"))
+                -- using poetry
+                if vim.v.shell_error == 0 and poetry_venv ~= "" then
+                    vim.notify("[From Pyright] Using poetry settings", vim.log.levels.WARN)
+                    return poetry_venv .. "/bin/python"
+                    -- using rye or uv, but no other differences using .venv directory.
+                elseif is_directory(uv_rye_env) then
+                    vim.notify("[From Pyright] Using rye or uv settings", vim.log.levels.WARN)
+                    return uv_rye_env .. '/bin/python3'
+                end
+            end
+            -- using virtualenv
+            if is_directory(virtualenv) then
+                vim.notify("[From Pyright] Using venv settings", vim.log.levels.WARN)
+                return virtualenv .. '/bin/python3'
+            else
+                vim.notify("Virtual environment not found. Using default Python.", vim.log.levels.WARN)
+            end
+            return vim.fn.exepath("python3")
+        end
+
+        lspconfig.pyright.setup {
+            settings = {
+                python = {
+                    pythonPath = get_python_path(),
+                },
+            },
+        }
+    end,
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
