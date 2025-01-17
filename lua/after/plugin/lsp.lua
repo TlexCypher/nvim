@@ -26,6 +26,11 @@ mason_lspconfig.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {}
     end,
+
+    ["solargraph"] = function()
+        lspconfig.solargraph.setup{}
+    end,
+
     ["pyright"] = function()
         local function is_directory(path)
             local stat = vim.loop.fs_stat(path)
