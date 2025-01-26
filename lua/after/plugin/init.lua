@@ -13,6 +13,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
+        "lervag/vimtex",
+        lazy = false, -- we don't want to lazy load VimTeX
+        -- tag = "v2.15", -- uncomment to pin to a specific release
+        init = function()
+            -- VimTeX configuration goes here, e.g.
+            vim.g.vimtex_view_method = "zathura"
+        end
+    },
+    {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' },

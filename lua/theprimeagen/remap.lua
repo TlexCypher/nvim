@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 --save and format
 vim.keymap.set("n", "<C-s>", function()
-    vim.lsp.buf.format()
+    -- vim.lsp.buf.format()
     vim.cmd("w")
 end)
 
