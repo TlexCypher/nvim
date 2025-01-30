@@ -27,21 +27,31 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
 
     },
-    --rose pine
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    },
     -- {
-    --     "folke/tokyonight.nvim",
-    --     name = "tokyonight",
+    --     "gbprod/nord.nvim",
+    --     lazy = false,
+    --     priority = 1000,
     --     config = function()
-    --         vim.cmd('colorscheme tokyonight')
+    --         require("nord").setup({})
+    --         vim.cmd.colorscheme("nord")
+    --     end,
+    -- },
+
+    --rose pine
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     config = function()
+    --         vim.cmd('colorscheme rose-pine')
     --     end
     -- },
+    {
+        "folke/tokyonight.nvim",
+        name = "tokyonight",
+        config = function()
+            vim.cmd('colorscheme tokyonight')
+        end
+    },
     -- {
     --     'Mofiqul/vscode.nvim',
     --     name = 'vscode',
