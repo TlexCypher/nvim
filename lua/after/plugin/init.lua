@@ -14,10 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {
         "lervag/vimtex",
-        lazy = false, -- we don't want to lazy load VimTeX
-        -- tag = "v2.15", -- uncomment to pin to a specific release
+        lazy = false,
         init = function()
-            -- VimTeX configuration goes here, e.g.
             vim.g.vimtex_view_method = "zathura"
         end
     },
@@ -27,24 +25,6 @@ require("lazy").setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
 
     },
-    -- {
-    --     "gbprod/nord.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     config = function()
-    --         require("nord").setup({})
-    --         vim.cmd.colorscheme("nord")
-    --     end,
-    -- },
-
-    --rose pine
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    -- },
     {
         "folke/tokyonight.nvim",
         name = "tokyonight",
@@ -52,23 +32,11 @@ require("lazy").setup({
             vim.cmd('colorscheme tokyonight')
         end
     },
-    -- {
-    --     'Mofiqul/vscode.nvim',
-    --     name = 'vscode',
-    -- },
-    -- {
-    --     "catppuccin/nvim",
-    --     name = "catppuccin",
-    --     priority = 1000,
-    --     background = { -- :h background
-    --         -- light = "latte",
-    --         dark = "macchiato",
-    --
-    --     },
-    -- },
+    -- amongst your other plugins
     {
-        -- amongst your other plugins
-        { 'akinsho/toggleterm.nvim', version = "*", config = true },
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = true
     },
     {
         'nvim-treesitter/nvim-treesitter',
@@ -200,4 +168,21 @@ require("lazy").setup({
             },
         },
     },
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            bigfile = { enabled = true },
+            dashboard = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            scroll = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+        },
+    }
 })
