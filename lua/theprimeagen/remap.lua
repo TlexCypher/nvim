@@ -35,3 +35,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- jump half screen but cursor stll remains center of screen.
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- resize window
+vim.keymap.set("n", "(", ":horizontal resize -5<CR>")
+vim.keymap.set("n", ")", ":horizontal resize +5<CR>")
+vim.keymap.set("n", "-", ":vertical resize -5<CR>")
+vim.keymap.set("n", "=", ":vertical resize +5<CR>")
