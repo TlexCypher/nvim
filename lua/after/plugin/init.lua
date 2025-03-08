@@ -51,9 +51,9 @@ require("lazy").setup({
     {
         'mbbill/undotree'
     },
-    {
-        "tpope/vim-fugitive"
-    },
+    -- {
+    --     "tpope/vim-fugitive"
+    -- },
     -- lsp
     {
         "williamboman/mason.nvim",
