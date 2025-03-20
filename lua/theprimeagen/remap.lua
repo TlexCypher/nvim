@@ -41,3 +41,6 @@ vim.keymap.set("n", "(", ":horizontal resize -5<CR>")
 vim.keymap.set("n", ")", ":horizontal resize +5<CR>")
 vim.keymap.set("n", "-", ":vertical resize -5<CR>")
 vim.keymap.set("n", "=", ":vertical resize +5<CR>")
+
+-- TBE!
+vim.keymap.set("n", "<leader>mc", "<cmd>MultiClip<CR>")

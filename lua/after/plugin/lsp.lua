@@ -56,7 +56,6 @@ mason_lspconfig.setup_handlers {
         end
 
         local function get_python_path()
-            print("[Debug] called get_python_path()")
             local cwd = vim.fn.getcwd()
             local pyproject_toml = cwd .. "/pyproject.toml"
             local virtualenv = cwd .. "/venv"
