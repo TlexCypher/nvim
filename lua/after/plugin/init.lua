@@ -13,6 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
+        "nvim-lua/plenary.nvim"
+    },
+    {
         "lervag/vimtex",
         lazy = false,
         init = function()
@@ -168,18 +171,15 @@ require("lazy").setup({
             },
         },
     },
-    -- This is my plugin.
-    -- See here and follow me.
-    -- Link: https://github.com/TlexCypher/clipper.nvim
     {
         {
             "TlexCypher/clipper.nvim",
-            dependencies = {
+            lazy = false, -- lazy should not be true.
+            dependencies = { -- this is dependency for ui.
                 "nvim-lua/plenary.nvim"
             },
             config = function()
                 require("clipper").setup()
             end
-        }
-    },
+        } },
 })
