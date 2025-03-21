@@ -178,10 +178,7 @@ require("lazy").setup({
                 "nvim-lua/plenary.nvim"
             },
             config = function()
-                require("clipper").setup({
-                    win_width = 80,
-                    win_height = 20
-                })
+                require("clipper").setup()
             end
         }
     },
