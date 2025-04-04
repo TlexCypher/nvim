@@ -24,7 +24,9 @@ mason.setup()
 mason_lspconfig.setup()
 mason_lspconfig.setup_handlers {
     function(server_name)
-        lspconfig[server_name].setup {}
+        if server_name ~= "jdtls" then
+            lspconfig[server_name].setup {}
+        end
     end,
 
     ["pyright"] = function()

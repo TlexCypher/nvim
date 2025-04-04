@@ -24,7 +24,7 @@ require("lazy").setup({
     },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.6',
+        tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' },
 
     },
@@ -172,14 +172,19 @@ require("lazy").setup({
         },
     },
     {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    },
+    {
         {
             "TlexCypher/clipper.nvim",
-            lazy = false, -- lazy should not be true.
+            lazy = false,    -- lazy should not be true.
             dependencies = { -- this is dependency for ui.
                 "nvim-lua/plenary.nvim"
             },
             config = function()
                 require("clipper").setup()
             end
-        } },
+        }
+    },
 })
