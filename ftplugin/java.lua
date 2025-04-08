@@ -1,5 +1,8 @@
 local jdtls_setup = require("jdtls.setup")
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+-- jdtls cannot analyze ant project, so we need to make .classpath file.
+-- See my original bash script to generate .classpath from build.xml, ant configuration file.
+-- Repository:
+local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".classpath" }
 local root_dir = jdtls_setup.find_root(root_markers)
 if not root_dir then
     return
@@ -9,17 +12,21 @@ local home = os.getenv("HOME")
 local jdtls_path = home .. "/.local/share/nvim/mason/packages/jdtls"
 local config_dir = jdtls_path .. "/config_mac" -- if you use linux /config_linux
 local launcher_path = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+local project_name = vim.fn.fnamemodify(root_dir, ":t")
 local workspace_dir = home .. "/.cache/jdtls/workspace/" .. project_name
 
 -- LSP capabilities with nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-function get_java()
+function get_java_home()
     local handle = io.popen("/usr/libexec/java_home -v 21")
     local java_home = handle:read("*a"):gsub("%s+", "")
     handle:close()
-    return java_home .. "/bin/java"
+    return java_home
+end
+
+function get_java()
+    return get_java_home() .. "/bin/java"
 end
 
 local config = {
@@ -46,7 +53,7 @@ local config = {
                 runtimes = {
                     {
                         name = "JavaSE-21",
-                        path = "/opt/homebrew/Cellar/openjdk@21/21.0.6/libexec/openjdk.jdk/Contents/Home",
+                        path = get_java_home(),
                     },
                 },
             },
@@ -58,7 +65,7 @@ local config = {
                     enabled = true, -- Mavenサポートを有効化
                 }
             },
-            signatureHelp = { enabled = true }, -- シグネチャヘルプを有効化
+            signatureHelp = { enabled = true },
         },
     },
     init_options = {
@@ -66,8 +73,5 @@ local config = {
         extendedClientCapabilities = jdtls_setup.extendedClientCapabilities
     }
 }
-
--- サーバーをアタッチする前に設定を確認するためのログ (デバッグ用)
--- print(vim.inspect(config))
 
 jdtls_setup.start_or_attach(config)

@@ -98,7 +98,6 @@ mason_lspconfig.setup_handlers {
     end,
 }
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.opt.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
